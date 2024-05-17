@@ -1,0 +1,1 @@
+export const LIST_CANDIDATES = "LIST_CANDIDATES"

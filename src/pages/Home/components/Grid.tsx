@@ -25,7 +25,7 @@ export const Grid = () => {
             style={{ width: "100%", height: "100%" }}
         >
             <div className="mb-4 flex justify-between content-center">
-                <h1 className="text-2xl font-bold">List of candidates</h1>
+                <h1 className="text-2xl font-bold">Candidates</h1>
                 <input type="text" className="w-72 p-2" placeholder="Search" />
             </div>
             <AgGridReact onRowClicked={handleRowClick} rowData={data} columnDefs={colDefs as ColDef[]} />

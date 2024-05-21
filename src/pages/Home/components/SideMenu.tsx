@@ -4,7 +4,7 @@ export const SideMenu = () => {
             <ul>
                 <li className="mb-6">
                     <a href="#" className="text-4xl font-bold hover:underline">
-                        CarZ
+                        JobK
                     </a>
                 </li>
                 <li className="mb-6">

@@ -1,4 +1,4 @@
-import { Grid } from "../components/Grid"
+import { Outlet } from "react-router"
 import { SideMenu } from "../components/SideMenu"
 
 export const Home = () => {
@@ -6,7 +6,7 @@ export const Home = () => {
         <div className="h-screen flex">
             <SideMenu />
             <div className="flex-grow bg-gray-100 p-4">
-                <Grid />
+                <Outlet />
             </div>
         </div>
     )

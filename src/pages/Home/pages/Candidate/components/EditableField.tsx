@@ -6,8 +6,10 @@ export const EditableField = ({
 }: EditableFieldProps) => {
     return (
         <>
-            {label && <label className="font-bold">{label}</label>}
-            {!isEditing && <div>{value}</div>}
+            <div>
+                {label && <div className="font-bold">{label}</div>}
+                {!isEditing && <div>{value}</div>}
+            </div>
 
             {isEditing && (
                 <div>

@@ -21,17 +21,16 @@ export const Candidate = () => {
     const { data, isLoading } = useGetCandidateById(urlParams.id as string)
 
     return (
-        <div className="mx-4 h-full">
+        <div className="h-full">
             {isLoading && <p>Loading...</p>}
 
             {!isLoading && data && (
-                <div className=" p-4">
-                    <div className="flex justify-around items-center mb-4">
+                <div className="">
+                    <div className="flex justify-around items-center mb-4 fixed w-full m-0 top-0 bg-slate-100 h-10">
                         <BackIcon
                             onClick={() => navigate("/")}
                             className="cursor-pointer"
                         />
-                        <img src={data.photo} alt="Profile" className="w-32" />
                         <h1 className="text-2xl font-bold">
                             {data.first_name} {data.last_name}
                         </h1>
@@ -41,7 +40,9 @@ export const Candidate = () => {
                         />
                     </div>
 
-                    <div className="mb-4 border rounded-lg p-4">
+                    <div className="mt-10 mb-4 border rounded-lg p-4 flex gap-5">
+                        <img src={data.photo} alt="Profile" className="w-32 rounded-lg" />
+                        
                         <EditableField
                             isEditing={isEditing}
                             value={data.current_position}

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router"
-import { SideMenu } from "../components/SideMenu"
+import { SideMenu } from "../../../components/SideMenu"
 
 export const Home = () => {
     return (

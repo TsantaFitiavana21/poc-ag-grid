@@ -6,4 +6,10 @@ export class JobAPI {
             .then((res) => res.json())
             .then((data) => data)
     }
+
+    static async getJob(): Promise<JobType> {
+        return fetch(import.meta.env.VITE_JOB_DETAILS_API_URL)
+            .then((res) => res.json())
+            .then((data) => data)
+    }
 }

@@ -1,3 +1,4 @@
 export const LIST_CANDIDATES = "LIST_CANDIDATES"
 export const GET_CANDIDATE_BY_ID = "GET_CANDIDATE_BY_ID"
 export const LIST_JOBS = "LIST_JOBS"
+export const GET_JOB_BY_ID = "GET_JOB_BY_ID"

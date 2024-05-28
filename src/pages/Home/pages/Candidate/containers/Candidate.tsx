@@ -1,6 +1,4 @@
 import { useNavigate, useParams } from "react-router"
-import { EditIcon } from "../../../../../icons/EditIcon"
-import { BackIcon } from "../../../../../icons/BackIcon"
 import { useGetCandidateById } from "../../../../../queries/useGetCandidateById"
 import {
     desired_missions,
@@ -9,9 +7,10 @@ import {
     experiences_years,
 } from "../../../../../constants/datas"
 import { mapExperiences } from "../../../../../utils"
-import { CustomSelect } from "../components/CustomSelect"
-import { EditableField } from "../components/EditableField"
+import { CustomSelect } from "../../../../../components/CustomSelect"
+import { EditableField } from "../../../../../components/EditableField"
 import { useState } from "react"
+import { Header } from "../../../../../components/Header"
 
 export const Candidate = () => {
     const [isEditing, setIsEditing] = useState(false)
@@ -25,24 +24,21 @@ export const Candidate = () => {
             {isLoading && <p>Loading...</p>}
 
             {!isLoading && data && (
-                <div className="">
-                    <div className="flex justify-around items-center mb-4 fixed w-full m-0 top-0 bg-slate-100 h-10">
-                        <BackIcon
-                            onClick={() => navigate("/")}
-                            className="cursor-pointer"
-                        />
-                        <h1 className="text-2xl font-bold">
-                            {data.first_name} {data.last_name}
-                        </h1>
-                        <EditIcon
-                            onClick={() => setIsEditing(!isEditing)}
-                            className="cursor-pointer"
-                        />
-                    </div>
+                <div>
+                    <Header
+                        isEditing={isEditing}
+                        navigate={navigate}
+                        setIsEditing={setIsEditing}
+                        title={`${data.first_name} ${data.last_name}`}
+                    />
 
                     <div className="mt-10 mb-4 border rounded-lg p-4 flex gap-5">
-                        <img src={data.photo} alt="Profile" className="w-32 rounded-lg" />
-                        
+                        <img
+                            src={data.photo}
+                            alt="Profile"
+                            className="w-32 rounded-lg"
+                        />
+
                         <EditableField
                             isEditing={isEditing}
                             value={data.current_position}

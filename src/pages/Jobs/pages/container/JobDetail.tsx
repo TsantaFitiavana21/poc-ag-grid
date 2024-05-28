@@ -1,0 +1,5 @@
+export const JobDetail = () => {
+    return <>
+        
+    </>
+}

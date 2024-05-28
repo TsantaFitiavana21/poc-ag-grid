@@ -27,16 +27,25 @@ export const Candidate = () => {
             {!isLoading && data && (
                 <div className=" p-4">
                     <div className="flex justify-around items-center mb-4">
-                        <BackIcon onClick={() => navigate("/")} className="cursor-pointer" />
+                        <BackIcon
+                            onClick={() => navigate("/")}
+                            className="cursor-pointer"
+                        />
                         <img src={data.photo} alt="Profile" className="w-32" />
-                        <h1 className="text-2xl font-bold">{data.first_name} {data.last_name}</h1>
-                        <EditIcon onClick={() => setIsEditing(!isEditing)} className="cursor-pointer" />
+                        <h1 className="text-2xl font-bold">
+                            {data.first_name} {data.last_name}
+                        </h1>
+                        <EditIcon
+                            onClick={() => setIsEditing(!isEditing)}
+                            className="cursor-pointer"
+                        />
                     </div>
 
                     <div className="mb-4 border rounded-lg p-4">
                         <EditableField
                             isEditing={isEditing}
                             value={data.current_position}
+                            label="Position actuel"
                         />
                     </div>
 
@@ -44,29 +53,36 @@ export const Candidate = () => {
                         <EditableField
                             isEditing={isEditing}
                             value={data.phone}
+                            label="Téléphone"
                         />
                     </div>
 
                     <div className="mb-4 border rounded-lg p-4">
                         <EditableField
                             isEditing={isEditing}
+                            label="TJM"
                             value={data.freelance.tjm.toString() + " €"}
                         />
                     </div>
 
                     <div className="mb-4 border rounded-lg p-4">
-                        Salaire variable
                         <EditableField
                             isEditing={isEditing}
-                            value={data.salary_expectations.variable.toString() + " €"}
+                            label="Salaire variable"
+                            value={
+                                data.salary_expectations.variable.toString() +
+                                " €"
+                            }
                         />
                     </div>
 
                     <div className="mb-4 border rounded-lg p-4">
-                        Salaire fixe
                         <EditableField
                             isEditing={isEditing}
-                            value={data.salary_expectations.fixed.toString() + " €"}
+                            label="Salaire fixe"
+                            value={
+                                data.salary_expectations.fixed.toString() + " €"
+                            }
                         />
                     </div>
 
@@ -79,32 +95,36 @@ export const Candidate = () => {
                     </div>
 
                     <div className="mb-4 border rounded-lg p-4">
-                        <div className="font-bold">Année d'expérience</div>
                         <CustomSelect
+                            label="Année d'expérience"
+                            isEditing={isEditing}
                             options={experiences_years}
                             value={mapExperiences(data.experience_years)}
                         />
                     </div>
 
                     <div className="mb-4 border rounded-lg p-4">
-                        <div className="font-bold">Structure de préférence</div>
                         <CustomSelect
+                            isEditing={isEditing}
+                            label="Structure de préférence"
                             options={desired_structure}
                             value={data.desired_structure[0]} // TODO: wrong data from dropdown
                         />
                     </div>
 
                     <div className="mb-4 border rounded-lg p-4">
-                        <div className="font-bold">Mission de préférence</div>
                         <CustomSelect
+                            label="Mission de préférence"
+                            isEditing={isEditing}
                             options={desired_missions}
                             value={data.desired_missions[0]} // TODO: wrong data from dropdown
                         />
                     </div>
 
                     <div className="mb-4 border rounded-lg p-4">
-                        <div className="font-bold">Domaine</div>
                         <CustomSelect
+                            label="Domaine"
+                            isEditing={isEditing}
                             options={domainValues}
                             value={data.field}
                         />

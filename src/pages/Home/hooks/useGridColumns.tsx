@@ -3,21 +3,6 @@ import { useMemo } from "react"
 export const useGridColumns = () => {
     return useMemo(
         () => [
-            {
-                field: "photo",
-                headerName: "Photo",
-                cellRenderer: (params: any) => (
-                    <span className="imgSpanLogo">
-                        {params.value && (
-                            <img
-                                alt={`${params.value} Flag`}
-                                src={`${params.value}`}
-                                className="logo"
-                            />
-                        )}
-                    </span>
-                ),
-            },
             { field: "first_name", headerName: "First Name" },
             { field: "last_name", headerName: "Last Name" },
             { field: "email", headerName: "Email" },

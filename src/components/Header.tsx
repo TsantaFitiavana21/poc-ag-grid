@@ -8,16 +8,16 @@ export const Header = ({
     handleBack,
 }: HeaderProps) => {
     return (
-        <div className="flex justify-around items-center mb-4 fixed w-full m-0 top-0 bg-slate-100 h-10">
-            <BackIcon
-                onClick={handleBack}
-                className="cursor-pointer"
-            />
+        <div className="px-8 flex justify-between items-center mb-4 fixed w-full m-0 top-0 h-10">
             <h1 className="text-2xl font-bold">{title}</h1>
-            <EditIcon
-                onClick={() => setIsEditing(!isEditing)}
-                className="cursor-pointer"
-            />
+
+            <div className="flex gap-5">
+                <BackIcon onClick={handleBack} className="cursor-pointer" />
+                <EditIcon
+                    onClick={() => setIsEditing(!isEditing)}
+                    className="cursor-pointer"
+                />
+            </div>
         </div>
     )
 }

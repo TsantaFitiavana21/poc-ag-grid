@@ -29,7 +29,7 @@ export const Candidate = () => {
                         isEditing={isEditing}
                         handleBack={() => navigate("/")}
                         setIsEditing={setIsEditing}
-                        title={`${data.first_name} ${data.last_name}`}
+                        title={"Candidate Details"}
                     />
 
                     <div className="mt-10 mb-4 border rounded-lg p-4 flex gap-5">

@@ -2,7 +2,7 @@ import { AgGridReact } from "@ag-grid-community/react" // React Grid Logic
 import "@ag-grid-community/styles/ag-grid.css" // Core CSS
 import "@ag-grid-community/styles/ag-theme-quartz.css" // Theme
 
-import { ColDef, ModuleRegistry, RowClickedEvent } from "@ag-grid-community/core"
+import { ColDef, ModuleRegistry } from "@ag-grid-community/core"
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model"
 import { useNavigate } from "react-router"
 import { useJobColumns } from "../hooks/useJobColumns"
@@ -15,8 +15,8 @@ export const JobGrid = () => {
     const colDefs = useJobColumns()
     const navigate = useNavigate()
 
-    const handleRowClick = (e: RowClickedEvent) => {
-        navigate(`/candidate/${e.data.id}`)
+    const handleRowClick = () => {
+        navigate(`/job-detail`)
     }
 
     return (

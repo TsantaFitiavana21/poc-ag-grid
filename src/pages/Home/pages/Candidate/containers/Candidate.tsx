@@ -27,7 +27,7 @@ export const Candidate = () => {
                 <div>
                     <Header
                         isEditing={isEditing}
-                        navigate={navigate}
+                        handleBack={() => navigate("/")}
                         setIsEditing={setIsEditing}
                         title={`${data.first_name} ${data.last_name}`}
                     />

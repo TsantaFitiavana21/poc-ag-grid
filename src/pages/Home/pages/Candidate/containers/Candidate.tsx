@@ -10,10 +10,11 @@ import { mapExperiences } from "../../../../../utils"
 import { CustomSelect } from "../../../../../components/CustomSelect"
 import { EditableField } from "../../../../../components/EditableField"
 import { useState } from "react"
-import { Header } from "../../../../../components/Header"
+import { BackIcon } from "../../../../../icons/BackIcon"
+import { EditIcon } from "../../../../../icons/EditIcon"
 
 export const Candidate = () => {
-    const [isEditing, setIsEditing] = useState(true)
+    const [isEditing, setIsEditing] = useState(false)
 
     const urlParams = useParams()
     const navigate = useNavigate()
@@ -28,23 +29,36 @@ export const Candidate = () => {
                     <div className="bg-white">
                         <div className="bg-gray-200 h-32"></div>
 
-                        <div className="flex items-center p-6">
-                            <div className="relative">
-                                <img
-                                    src={data.photo}
-                                    alt="Profile Picture"
-                                    className="rounded-full h-40 w-40 object-cover object-right-top border-4 border-white -mt-20 mx-4"
-                                />
+                        <div className="flex items-center p-6 justify-between sticky top-0">
+                            <div className="flex">
+                                <div className="relative">
+                                    <img
+                                        src={data.photo}
+                                        alt="Profile Picture"
+                                        className="rounded-full h-40 w-40 object-cover object-right-top border-4 border-white -mt-20 mx-4"
+                                    />
+                                </div>
+                                <div className="ml-4">
+                                    <h1 className="text-3xl font-bold">
+                                        {data.first_name.toUpperCase() +
+                                            " " +
+                                            data.last_name.toUpperCase()}
+                                    </h1>
+                                    <p className="text-gray-600">
+                                        {data.current_position}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="ml-4 -mt-6">
-                                <h1 className="text-3xl font-bold">
-                                    {data.first_name.toUpperCase() +
-                                        " " +
-                                        data.last_name.toUpperCase()}
-                                </h1>
-                                <p className="text-gray-600">
-                                    {data.current_position}
-                                </p>
+
+                            <div className="flex justify-end space-x-5">
+                                <BackIcon
+                                    onClick={() => navigate(-1)}
+                                    className="cursor-pointer"
+                                />
+                                <EditIcon
+                                    onClick={() => setIsEditing(!isEditing)}
+                                    className="cursor-pointer"
+                                />
                             </div>
                         </div>
                     </div>

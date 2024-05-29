@@ -5,23 +5,23 @@ export const EditableField = ({
     onChange,
 }: EditableFieldProps) => {
     return (
-        <>
+        <div>
             <div>
-                {label && <div className="font-bold">{label}</div>}
-                {!isEditing && <div>{value}</div>}
+                {label && <div className="text-sm text-slate-500 mb-2">{label}</div>}
+                {!isEditing && <div className="text-lg w-72 md:w-54">{value}</div>}
             </div>
 
             {isEditing && (
                 <div>
                     <input
-                        className="border-2 rounded-md py-2 px-4 focus:outline-none focus:border-blue-200"
+                        className="border-2 rounded-md py-2 px-4 focus:outline-none w-72 md:w-54 focus:border-blue-200"
                         placeholder={label || ""}
                         value={value}
                         onChange={onChange}
                     />
                 </div>
             )}
-        </>
+        </div>
     )
 }
 

@@ -8,15 +8,27 @@ export const CustomSelect = ({
     onChange,
 }: CustomSelectProps) => {
     return (
-        <>
-            {label && <div className="font-bold">{label}</div>}
-            {!isEditing && <div>{value}</div>}
+        <div>
+            <div>
+                {label && (
+                    <div className="text-sm text-slate-500 mb-2">{label}</div>
+                )}
+                
+                {!isEditing && (
+                    <div className="text-lg w-72 md:w-54">
+                        {options.find(
+                            (option) =>
+                                option.value === value || option.label == value
+                        )?.label || ""}
+                    </div>
+                )}
+            </div>
 
             {isEditing && (
                 <select
                     value={value}
                     onChange={onChange}
-                    className="border-2 text-black py-2 px-4 rounded-md"
+                    className="border-2 text-black py-2 px-4 rounded-md w-72 md:w-54"
                 >
                     {options.map((option, index) => (
                         <option key={index} value={option.value}>
@@ -25,7 +37,7 @@ export const CustomSelect = ({
                     ))}
                 </select>
             )}
-        </>
+        </div>
     )
 }
 

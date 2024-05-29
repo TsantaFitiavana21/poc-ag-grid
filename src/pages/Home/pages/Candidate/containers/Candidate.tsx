@@ -21,15 +21,26 @@ export const Candidate = () => {
     const { data, isLoading } = useGetCandidateById(urlParams.id as string)
 
     return (
-        <div className="h-full">
+        <div className="h-screen overflow-y-scroll">
             {isLoading && <p>Loading...</p>}
 
             {!isLoading && data && (
                 <div>
                     <div className="bg-white">
-                        <div className="bg-gray-200 h-32"></div>
+                        <div className="bg-gray-200 h-32 pt-4 w-full ">
+                            <div className="flex justify-between space-x-5 mx-6 sticky top-0">
+                                <BackIcon
+                                    onClick={() => navigate(-1)}
+                                    className="cursor-pointer"
+                                />
+                                <EditIcon
+                                    onClick={() => setIsEditing(!isEditing)}
+                                    className="cursor-pointer"
+                                />
+                            </div>
+                        </div>
 
-                        <div className="flex items-center p-6 justify-between sticky top-0">
+                        <div className="flex items-center p-6 justify-between">
                             <div className="flex">
                                 <div className="relative">
                                     <img
@@ -48,17 +59,6 @@ export const Candidate = () => {
                                         {data.current_position}
                                     </p>
                                 </div>
-                            </div>
-
-                            <div className="flex justify-end space-x-5">
-                                <BackIcon
-                                    onClick={() => navigate(-1)}
-                                    className="cursor-pointer"
-                                />
-                                <EditIcon
-                                    onClick={() => setIsEditing(!isEditing)}
-                                    className="cursor-pointer"
-                                />
                             </div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@ export const Candidate = () => {
                     <h1 className="mx-12 text-2xl mt-6 text-slate-500 border-b">
                         Carreer
                     </h1>
-                    <div className="mx-12 mt-4 flex space-x-4 justify-between mb-8">
+                    <div className="mx-12 mt-4 flex space-x-4 justify-between mb-6">
                         <CustomSelect
                             label="Année d'expérience"
                             isEditing={isEditing}

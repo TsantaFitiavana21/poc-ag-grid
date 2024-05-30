@@ -66,7 +66,7 @@ export const Candidate = () => {
                     <h1 className="mx-12 text-2xl text-slate-500 border-b">
                         Personal Informations
                     </h1>
-                    <div className="mx-12 mt-4 flex space-x-4 justify-between">
+                    <div className="mx-12 mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <EditableField
                             isEditing={isEditing}
                             value={data.first_name}
@@ -90,9 +90,7 @@ export const Candidate = () => {
                             value={data.current_position}
                             label="Actual Position"
                         />
-                    </div>
 
-                    <div className="mx-12 mt-4 flex space-x-4 justify-between">
                         <EditableField
                             isEditing={isEditing}
                             value={data.email?.[0]}
@@ -103,7 +101,7 @@ export const Candidate = () => {
                     <h1 className="mx-12 text-2xl mt-6 text-slate-500 border-b">
                         Prices
                     </h1>
-                    <div className="mx-12 mt-4 flex space-x-4 justify-between">
+                    <div className="mx-12 mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <EditableField
                             isEditing={isEditing}
                             label="TJM"
@@ -133,7 +131,7 @@ export const Candidate = () => {
                     <h1 className="mx-12 text-2xl mt-6 text-slate-500 border-b">
                         Carreer
                     </h1>
-                    <div className="mx-12 mt-4 flex space-x-4 justify-between mb-56">
+                    <div className="mx-12 mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-56">
                         <CustomSelect
                             label="Année d'expérience"
                             isEditing={isEditing}

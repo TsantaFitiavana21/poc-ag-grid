@@ -15,7 +15,7 @@ export const CustomSelect = ({
                 )}
                 
                 {!isEditing && (
-                    <div className="text-lg w-72 md:w-54">
+                    <div className="text-lg">
                         {options.find(
                             (option) =>
                                 option.value === value || option.label == value
@@ -28,7 +28,7 @@ export const CustomSelect = ({
                 <select
                     value={value}
                     onChange={onChange}
-                    className="border-2 text-black py-2 px-4 rounded-md w-72 md:w-54"
+                    className="border-2 text-black py-2 px-4 rounded-md w-full focus:outline-none focus:border-blue-200"
                 >
                     {options.map((option, index) => (
                         <option key={index} value={option.value}>

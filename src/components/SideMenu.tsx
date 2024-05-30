@@ -13,7 +13,7 @@ export const SideMenu = () => {
                 </li>
                 <li className="mb-4 flex items-center space-x-2 hover:text-blue-300">
                     <CandidateIcon />
-                    <a href="/" className="text-lg ">
+                    <a href="/candidates" className="text-lg ">
                         Candidates
                     </a>
                 </li>
@@ -25,7 +25,7 @@ export const SideMenu = () => {
                 </li>
                 <li className="mb-4 flex items-center space-x-2 hover:text-blue-300">
                     <SettingsIcon />
-                    <a href="/jobs" className="text-lg ">
+                    <a href="/settings" className="text-lg ">
                         Settings
                     </a>
                 </li>

@@ -27,8 +27,8 @@ export const Candidate = () => {
             {!isLoading && data && (
                 <div>
                     <div className="bg-white">
-                        <div className="bg-gray-200 h-32 pt-4 w-full ">
-                            <div className="flex justify-between space-x-5 mx-6 sticky top-0">
+                        <div className=" bg-gray-100 shadow-md p-4 w-full sticky top-0 z-10">
+                            <div className="flex justify-between space-x-5 mx-6">
                                 <BackIcon
                                     onClick={() => navigate(-1)}
                                     className="cursor-pointer"
@@ -46,10 +46,10 @@ export const Candidate = () => {
                                     <img
                                         src={data.photo}
                                         alt="Profile Picture"
-                                        className="rounded-full h-40 w-40 object-cover object-right-top border-4 border-white -mt-20 mx-4"
+                                        className="rounded-full h-40 w-40 object-cover object-right-top border-4 border-white mx-4"
                                     />
                                 </div>
-                                <div className="ml-4">
+                                <div className="ml-4 pt-12">
                                     <h1 className="text-3xl font-bold">
                                         {data.first_name.toUpperCase() +
                                             " " +
@@ -133,7 +133,7 @@ export const Candidate = () => {
                     <h1 className="mx-12 text-2xl mt-6 text-slate-500 border-b">
                         Carreer
                     </h1>
-                    <div className="mx-12 mt-4 flex space-x-4 justify-between mb-6">
+                    <div className="mx-12 mt-4 flex space-x-4 justify-between mb-56">
                         <CustomSelect
                             label="Année d'expérience"
                             isEditing={isEditing}

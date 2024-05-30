@@ -6,26 +6,26 @@ export const SideMenu = () => {
     return (
         <div className="w-64 bg-gray-800 text-white p-6">
             <ul>
-                <li className="mb-6">
-                    <a href="/" className="text-4xl font-bold hover:underline">
+                <li className="mb-6 hover:text-blue-300">
+                    <a href="/" className="text-4xl font-bold ">
                         JobK
                     </a>
                 </li>
-                <li className="mb-4 flex items-center space-x-2">
+                <li className="mb-4 flex items-center space-x-2 hover:text-blue-300">
                     <CandidateIcon />
-                    <a href="/" className="text-lg hover:underline">
+                    <a href="/" className="text-lg ">
                         Candidates
                     </a>
                 </li>
-                <li className="mb-4 flex items-center space-x-2">
+                <li className="mb-4 flex items-center space-x-2 hover:text-blue-300">
                     <JobIcon />
-                    <a href="/jobs" className="text-lg hover:underline">
+                    <a href="/jobs" className="text-lg ">
                         Jobs
                     </a>
                 </li>
-                <li className="mb-4 flex items-center space-x-2">
+                <li className="mb-4 flex items-center space-x-2 hover:text-blue-300">
                     <SettingsIcon />
-                    <a href="/jobs" className="text-lg hover:underline">
+                    <a href="/jobs" className="text-lg ">
                         Settings
                     </a>
                 </li>

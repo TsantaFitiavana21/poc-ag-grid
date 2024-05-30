@@ -12,6 +12,7 @@ import { EditableField } from "../../../../../components/EditableField"
 import { useState } from "react"
 import { BackIcon } from "../../../../../icons/BackIcon"
 import { EditIcon } from "../../../../../icons/EditIcon"
+import { CheckIcon } from "../../../../../icons/CheckIcon"
 
 export const Candidate = () => {
     const [isEditing, setIsEditing] = useState(false)
@@ -33,10 +34,17 @@ export const Candidate = () => {
                                     onClick={() => navigate(-1)}
                                     className="cursor-pointer"
                                 />
-                                <EditIcon
-                                    onClick={() => setIsEditing(!isEditing)}
-                                    className="cursor-pointer"
-                                />
+                                {!isEditing ? (
+                                    <EditIcon
+                                        onClick={() => setIsEditing(!isEditing)}
+                                        className="cursor-pointer"
+                                    />
+                                ) : (
+                                    <CheckIcon
+                                        className="cursor-pointer"
+                                        onClick={() => setIsEditing(!isEditing)}
+                                    />
+                                )}
                             </div>
                         </div>
 

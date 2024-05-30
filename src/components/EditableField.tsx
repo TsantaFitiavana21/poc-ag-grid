@@ -14,7 +14,7 @@ export const EditableField = ({
             {isEditing && (
                 <div>
                     <input
-                        className="border-2 rounded-md py-2 px-4 focus:outline-none  focus:border-blue-200"
+                        className="border-2 rounded-md py-2 px-4 focus:outline-none w-full  focus:border-blue-200"
                         placeholder={label || ""}
                         value={value}
                         onChange={onChange}

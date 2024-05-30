@@ -1,3 +1,3 @@
 export const mapExperiences = (exp: string) => {
-    return exp.replaceAll(" ", "").replace("-", "_")
+    return (exp as any).replaceAll(" ", "").replace("-", "_")
 }

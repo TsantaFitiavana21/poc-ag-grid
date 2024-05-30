@@ -1,7 +1,7 @@
 import { Candidate, CandidateAPIResponse } from "../types/Candidates"
 
 export const useMapRowData = (data: CandidateAPIResponse[]): Candidate[] => {
-    return data.map((candidate: CandidateAPIResponse) => {
+    return data.map((candidate) => {
         return {
             id: candidate.id,
             photo: candidate.photo,
@@ -15,8 +15,10 @@ export const useMapRowData = (data: CandidateAPIResponse[]): Candidate[] => {
             desired_structure: candidate.desired_structure.map((s) => s).join(", "),
             freelance: candidate.freelance.tjm,
             introduction: candidate.introduction,
-            salary_expectations: candidate.salary_expectations.fixed,
+            salary_expectations: candidate.salary_expectations.fixed.toString(),
             phone: candidate.phone,
+            field: candidate.field,
+            experience_years: candidate.experience_years,
         }
     })
 }

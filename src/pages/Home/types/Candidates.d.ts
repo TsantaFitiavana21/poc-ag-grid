@@ -13,6 +13,7 @@ export type Candidate = {
     freelance: number
     introduction: string
     salary_expectations: string
+    variable_salary: string
     field: string
     phone: string
 }

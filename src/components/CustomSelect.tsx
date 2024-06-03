@@ -4,6 +4,7 @@ export const CustomSelect = ({
     value,
     options,
     label,
+    name,
     isEditing,
     onChange,
 }: CustomSelectProps) => {
@@ -27,6 +28,7 @@ export const CustomSelect = ({
             {isEditing && (
                 <select
                     value={value}
+                    name={name}
                     onChange={onChange}
                     className="border-2 text-black py-2 px-4 rounded-md w-full focus:outline-none focus:border-blue-200"
                 >
@@ -44,6 +46,7 @@ export const CustomSelect = ({
 type CustomSelectProps = {
     value: string
     label: string
+    name: string
     isEditing: boolean
     options: { value: string; label: string }[]
     onChange?: (value: ChangeEvent<HTMLSelectElement>) => void

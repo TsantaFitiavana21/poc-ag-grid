@@ -9,17 +9,34 @@ import {
 import { mapExperiences } from "../../../../../utils"
 import { CustomSelect } from "../../../../../components/CustomSelect"
 import { EditableField } from "../../../../../components/EditableField"
-import { useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 import { BackIcon } from "../../../../../icons/BackIcon"
 import { EditIcon } from "../../../../../icons/EditIcon"
 import { CheckIcon } from "../../../../../icons/CheckIcon"
+import { useMapRowData } from "../../../hooks/useMapRowData"
+import { Candidate as CandidateType } from "../../../types/Candidates"
 
 export const Candidate = () => {
     const [isEditing, setIsEditing] = useState(false)
+    const [candidate, setCandidate] = useState({} as CandidateType)
 
     const urlParams = useParams()
     const navigate = useNavigate()
     const { data, isLoading } = useGetCandidateById(urlParams.id as string)
+
+    const mapCandidate = useMapRowData()
+
+    const handleChange = (
+        e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+        setCandidate({ ...candidate, [e.target.name]: e.target.value })
+    }
+
+    useEffect(() => {
+        if (data) {
+            setCandidate(mapCandidate(data))
+        }
+    }, [data])
 
     return (
         <div className="h-screen overflow-y-scroll">
@@ -77,32 +94,42 @@ export const Candidate = () => {
                     <div className="mx-12 mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <EditableField
                             isEditing={isEditing}
-                            value={data.first_name}
+                            value={candidate.first_name}
                             label="First Name"
+                            name="first_name"
+                            onChange={handleChange}
                         />
 
                         <EditableField
                             isEditing={isEditing}
-                            value={data.last_name}
+                            value={candidate.last_name}
                             label="Last Name"
+                            name="last_name"
+                            onChange={handleChange}
                         />
 
                         <EditableField
                             isEditing={isEditing}
-                            value={data.phone}
+                            value={candidate.phone}
                             label="Phone"
+                            name="phone"
+                            onChange={handleChange}
                         />
 
                         <EditableField
                             isEditing={isEditing}
-                            value={data.current_position}
+                            value={candidate.current_position}
                             label="Actual Position"
+                            name="current_position"
+                            onChange={handleChange}
                         />
 
                         <EditableField
                             isEditing={isEditing}
-                            value={data.email?.[0]}
+                            value={candidate.email}
                             label="Email"
+                            name="email"
+                            onChange={handleChange}
                         />
                     </div>
 
@@ -113,24 +140,25 @@ export const Candidate = () => {
                         <EditableField
                             isEditing={isEditing}
                             label="TJM"
-                            value={data.freelance.tjm.toString() + " €"}
+                            name="freelance"
+                            onChange={handleChange}
+                            value={candidate.freelance.toString() }
                         />
 
                         <EditableField
                             isEditing={isEditing}
                             label="Salaire variable"
-                            value={
-                                data.salary_expectations.variable.toString() +
-                                " €"
-                            }
+                            value={candidate.variable_salary }
+                            onChange={handleChange}
+                            name="variable_salary"
                         />
 
                         <EditableField
                             isEditing={isEditing}
                             label="Salaire fixe"
-                            value={
-                                data.salary_expectations.fixed.toString() + " €"
-                            }
+                            value={candidate.salary_expectations }
+                            onChange={handleChange}
+                            name="salary_expectations"
                         />
 
                         <div className="w-72 md:w-54"></div>
@@ -143,29 +171,37 @@ export const Candidate = () => {
                         <CustomSelect
                             label="Année d'expérience"
                             isEditing={isEditing}
+                            name="experience_years"
                             options={experiences_years}
-                            value={mapExperiences(data.experience_years)}
+                            onChange={handleChange}
+                            value={mapExperiences(candidate.experience_years)}
                         />
 
                         <CustomSelect
                             isEditing={isEditing}
                             label="Structure de préférence"
                             options={desired_structure}
-                            value={data.desired_structure[0]} // TODO: wrong data from dropdown
+                            onChange={handleChange}
+                            name="desired_structure"
+                            value={candidate.desired_structure} 
                         />
 
                         <CustomSelect
                             label="Mission de préférence"
                             isEditing={isEditing}
+                            name="desired_missions"
                             options={desired_missions}
-                            value={data.desired_missions[0]} // TODO: wrong data from dropdown
+                            onChange={handleChange}
+                            value={candidate.desired_missions} 
                         />
 
                         <CustomSelect
                             label="Domaine"
                             isEditing={isEditing}
+                            name="field"
                             options={domainValues}
-                            value={data.field}
+                            onChange={handleChange}
+                            value={candidate.field}
                         />
                     </div>
                 </div>

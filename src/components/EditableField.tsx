@@ -1,6 +1,7 @@
 export const EditableField = ({
     isEditing,
     label,
+    name,
     value,
     onChange,
 }: EditableFieldProps) => {
@@ -17,6 +18,7 @@ export const EditableField = ({
                         className="border-2 rounded-md py-2 px-4 focus:outline-none w-full  focus:border-blue-200"
                         placeholder={label || ""}
                         value={value}
+                        name={name}
                         onChange={onChange}
                     />
                 </div>
@@ -29,5 +31,6 @@ type EditableFieldProps = {
     isEditing: boolean
     label?: string
     value: string
+    name: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }

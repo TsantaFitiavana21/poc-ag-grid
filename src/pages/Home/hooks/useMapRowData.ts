@@ -1,24 +1,25 @@
 import { Candidate, CandidateAPIResponse } from "../types/Candidates"
 
-export const useMapRowData = (data: CandidateAPIResponse[]): Candidate[] => {
-    return data.map((candidate) => {
+export const useMapRowData = () => {
+    return (data: CandidateAPIResponse): Candidate => {
         return {
-            id: candidate.id,
-            photo: candidate.photo,
-            first_name: candidate.first_name,
-            last_name: candidate.last_name,
-            email: candidate.email.map((e) => e).join(", "),
-            current_position: candidate.current_position,
-            availability_months: candidate.availability_months,
-            benefits: candidate.benefits,
-            desired_missions: candidate.desired_missions.map((m) => m).join(", "),
-            desired_structure: candidate.desired_structure.map((s) => s).join(", "),
-            freelance: candidate.freelance.tjm,
-            introduction: candidate.introduction,
-            salary_expectations: candidate.salary_expectations.fixed.toString(),
-            phone: candidate.phone,
-            field: candidate.field,
-            experience_years: candidate.experience_years,
+            id: data.id,
+            photo: data.photo,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email.map((e) => e).join(", "),
+            current_position: data.current_position,
+            availability_months: data.availability_months,
+            benefits: data.benefits,
+            desired_missions: data.desired_missions.map((m) => m).join(", "),
+            desired_structure: data.desired_structure.map((s) => s).join(", "),
+            freelance: data.freelance.tjm,
+            introduction: data.introduction,
+            salary_expectations: data.salary_expectations.fixed.toString(),
+            variable_salary: data.salary_expectations.variable.toString(),
+            phone: data.phone,
+            field: data.field,
+            experience_years: data.experience_years,
         }
-    })
+    }
 }

@@ -13,3 +13,17 @@ export type JobType = {
     availability_months: number[];
     fields: string[];
 }
+
+export type Job = {
+    id: string;
+    logo: string;
+    company: string;
+    title: string;
+    introduction: string;
+    offered_structure: string;
+    offered_missions: string;
+    offered_salary: string;
+    experience_years: string;
+    availability_months: string;
+    fields: string;
+}

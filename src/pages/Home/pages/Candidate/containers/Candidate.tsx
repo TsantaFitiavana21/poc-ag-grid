@@ -94,7 +94,7 @@ export const Candidate = () => {
                     <div className="mx-12 mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <EditableField
                             isEditing={isEditing}
-                            value={candidate.first_name}
+                            value={candidate?.first_name}
                             label="First Name"
                             name="first_name"
                             onChange={handleChange}
@@ -102,7 +102,7 @@ export const Candidate = () => {
 
                         <EditableField
                             isEditing={isEditing}
-                            value={candidate.last_name}
+                            value={candidate?.last_name}
                             label="Last Name"
                             name="last_name"
                             onChange={handleChange}
@@ -110,7 +110,7 @@ export const Candidate = () => {
 
                         <EditableField
                             isEditing={isEditing}
-                            value={candidate.phone}
+                            value={candidate?.phone}
                             label="Phone"
                             name="phone"
                             onChange={handleChange}
@@ -118,7 +118,7 @@ export const Candidate = () => {
 
                         <EditableField
                             isEditing={isEditing}
-                            value={candidate.current_position}
+                            value={candidate?.current_position}
                             label="Actual Position"
                             name="current_position"
                             onChange={handleChange}
@@ -126,7 +126,7 @@ export const Candidate = () => {
 
                         <EditableField
                             isEditing={isEditing}
-                            value={candidate.email}
+                            value={candidate?.email}
                             label="Email"
                             name="email"
                             onChange={handleChange}
@@ -142,13 +142,13 @@ export const Candidate = () => {
                             label="TJM"
                             name="freelance"
                             onChange={handleChange}
-                            value={candidate.freelance.toString() }
+                            value={candidate?.freelance?.toString() }
                         />
 
                         <EditableField
                             isEditing={isEditing}
                             label="Salaire variable"
-                            value={candidate.variable_salary }
+                            value={candidate?.variable_salary }
                             onChange={handleChange}
                             name="variable_salary"
                         />
@@ -156,7 +156,7 @@ export const Candidate = () => {
                         <EditableField
                             isEditing={isEditing}
                             label="Salaire fixe"
-                            value={candidate.salary_expectations }
+                            value={candidate?.salary_expectations }
                             onChange={handleChange}
                             name="salary_expectations"
                         />
@@ -174,7 +174,7 @@ export const Candidate = () => {
                             name="experience_years"
                             options={experiences_years}
                             onChange={handleChange}
-                            value={mapExperiences(candidate.experience_years)}
+                            value={mapExperiences(candidate?.experience_years)}
                         />
 
                         <CustomSelect
@@ -183,7 +183,7 @@ export const Candidate = () => {
                             options={desired_structure}
                             onChange={handleChange}
                             name="desired_structure"
-                            value={candidate.desired_structure} 
+                            value={candidate?.desired_structure} 
                         />
 
                         <CustomSelect
@@ -192,7 +192,7 @@ export const Candidate = () => {
                             name="desired_missions"
                             options={desired_missions}
                             onChange={handleChange}
-                            value={candidate.desired_missions} 
+                            value={candidate?.desired_missions} 
                         />
 
                         <CustomSelect
@@ -201,7 +201,7 @@ export const Candidate = () => {
                             name="field"
                             options={domainValues}
                             onChange={handleChange}
-                            value={candidate.field}
+                            value={candidate?.field}
                         />
                     </div>
                 </div>

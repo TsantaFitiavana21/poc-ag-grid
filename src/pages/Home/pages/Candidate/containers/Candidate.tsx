@@ -15,14 +15,18 @@ import { EditIcon } from "../../../../../icons/EditIcon"
 import { CheckIcon } from "../../../../../icons/CheckIcon"
 import { useMapRowData } from "../../../hooks/useMapRowData"
 import { Candidate as CandidateType } from "../../../types/Candidates"
+import { EnumMode } from "../../../types/EnumMode"
 
-export const Candidate = () => {
+export const Candidate = ({ mode = "edit" }: CandidateProps) => {
     const [isEditing, setIsEditing] = useState(false)
     const [candidate, setCandidate] = useState({} as CandidateType)
 
     const urlParams = useParams()
     const navigate = useNavigate()
-    const { data, isLoading } = useGetCandidateById(urlParams.id as string)
+    const { data, isLoading } = useGetCandidateById(
+        urlParams.id as string,
+        mode
+    )
 
     const mapCandidate = useMapRowData()
 
@@ -38,11 +42,17 @@ export const Candidate = () => {
         }
     }, [data])
 
+    useEffect(() => {
+        if(mode == EnumMode.CREATE) {
+            setIsEditing(true)
+        }
+    }, [])
+
     return (
         <div className="h-screen overflow-y-scroll">
             {isLoading && <p>Loading...</p>}
 
-            {!isLoading && data && (
+            {(!isLoading || mode == EnumMode.CREATE || data) && (
                 <div>
                     <div className="bg-white">
                         <div className=" bg-gray-100 shadow-md p-4 w-full sticky top-0 z-10">
@@ -65,30 +75,30 @@ export const Candidate = () => {
                             </div>
                         </div>
 
-                        <div className="flex items-center p-6 justify-between">
+                        {mode !== EnumMode.CREATE && <div className="flex items-center p-6 justify-between">
                             <div className="flex">
                                 <div className="relative">
                                     <img
-                                        src={data.photo}
+                                        src={data?.photo}
                                         alt="Profile Picture"
                                         className="rounded-full h-40 w-40 object-cover object-right-top border-4 border-white mx-4"
                                     />
                                 </div>
                                 <div className="ml-4 pt-12">
                                     <h1 className="text-3xl font-bold">
-                                        {data.first_name.toUpperCase() +
+                                        {data?.first_name.toUpperCase() +
                                             " " +
-                                            data.last_name.toUpperCase()}
+                                            data?.last_name.toUpperCase()}
                                     </h1>
                                     <p className="text-gray-600">
-                                        {data.current_position}
+                                        {data?.current_position}
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                     </div>
 
-                    <h1 className="mx-12 text-2xl text-slate-500 border-b">
+                    <h1 className="mx-12 text-2xl text-slate-500 border-b mt-4">
                         Personal Informations
                     </h1>
                     <div className="mx-12 mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -142,13 +152,13 @@ export const Candidate = () => {
                             label="TJM"
                             name="freelance"
                             onChange={handleChange}
-                            value={candidate?.freelance?.toString() }
+                            value={candidate?.freelance?.toString()}
                         />
 
                         <EditableField
                             isEditing={isEditing}
                             label="Salaire variable"
-                            value={candidate?.variable_salary }
+                            value={candidate?.variable_salary}
                             onChange={handleChange}
                             name="variable_salary"
                         />
@@ -156,7 +166,7 @@ export const Candidate = () => {
                         <EditableField
                             isEditing={isEditing}
                             label="Salaire fixe"
-                            value={candidate?.salary_expectations }
+                            value={candidate?.salary_expectations}
                             onChange={handleChange}
                             name="salary_expectations"
                         />
@@ -183,7 +193,7 @@ export const Candidate = () => {
                             options={desired_structure}
                             onChange={handleChange}
                             name="desired_structure"
-                            value={candidate?.desired_structure} 
+                            value={candidate?.desired_structure}
                         />
 
                         <CustomSelect
@@ -192,7 +202,7 @@ export const Candidate = () => {
                             name="desired_missions"
                             options={desired_missions}
                             onChange={handleChange}
-                            value={candidate?.desired_missions} 
+                            value={candidate?.desired_missions}
                         />
 
                         <CustomSelect
@@ -208,4 +218,8 @@ export const Candidate = () => {
             )}
         </div>
     )
+}
+
+export interface CandidateProps {
+    mode?: string
 }

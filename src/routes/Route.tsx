@@ -30,6 +30,10 @@ export const router = createBrowserRouter([
         element: <Candidate />,
     },
     {
+        path: "/candidate/add",
+        element: <Candidate mode="create" />,
+    },
+    {
         path: "/job-detail",
         element: <JobDetail />,
     },

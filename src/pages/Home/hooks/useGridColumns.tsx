@@ -3,7 +3,7 @@ import { useMemo } from "react"
 export const useGridColumns = () => {
     return useMemo(
         () => [
-            { field: "first_name", headerName: "First Name" },
+            { field: "first_name", headerName: "First Name", checkboxSelection: true, headerCheckboxSelection: true,},
             { field: "last_name", headerName: "Last Name" },
             { field: "email", headerName: "Email" },
             { field: "current_position", headerName: "Current Position" },
